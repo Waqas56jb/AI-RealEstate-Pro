@@ -1,0 +1,58 @@
+import { avatar } from './images'
+
+export const agents = [
+  {
+    id: 'a1',
+    name: 'Amara Sinclair',
+    title: 'Principal Broker · Waterfront',
+    photo: avatar('photo-1494790108377-be9c29b29330'),
+    rating: 4.9,
+    reviews: 214,
+    deals: 186,
+    languages: ['English', 'French'],
+    phone: '+1 (415) 555-0142',
+    email: 'amara@estatly.ai',
+    bio: 'Fifteen years on the waterfront market. Amara closes the listings other agents call unsellable, and her clients average 6% over asking.',
+  },
+  {
+    id: 'a2',
+    name: 'Daniel Okafor',
+    title: 'Senior Agent · New Developments',
+    photo: avatar('photo-1507003211169-0a1dd7228f2d'),
+    rating: 4.8,
+    reviews: 167,
+    deals: 143,
+    languages: ['English', 'Yoruba'],
+    phone: '+1 (415) 555-0188',
+    email: 'daniel@estatly.ai',
+    bio: 'Specialises in off-plan and new-build inventory. Daniel has placed buyers in eleven towers before their public launch.',
+  },
+  {
+    id: 'a3',
+    name: 'Mei-Lin Zhao',
+    title: 'Investment Advisor · Yield',
+    photo: avatar('photo-1438761681033-6461ffad8d80'),
+    rating: 5.0,
+    reviews: 98,
+    deals: 121,
+    languages: ['English', 'Mandarin'],
+    phone: '+1 (415) 555-0119',
+    email: 'meilin@estatly.ai',
+    bio: 'Builds income portfolios for cross-border investors. Mei-Lin models every deal on ten-year net yield, not headline price.',
+  },
+  {
+    id: 'a4',
+    name: 'Tomás Rivera',
+    title: 'Agent · Family Homes',
+    photo: avatar('photo-1472099645785-5658abf4ff4e'),
+    rating: 4.7,
+    reviews: 302,
+    deals: 264,
+    languages: ['English', 'Spanish'],
+    phone: '+1 (415) 555-0173',
+    email: 'tomas@estatly.ai',
+    bio: 'The highest-volume agent on the platform. Tomás knows school catchments street by street and answers within four minutes.',
+  },
+]
+
+export const agentById = (id) => agents.find((agent) => agent.id === id)
