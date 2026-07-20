@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, ChevronDown, MapPin, Play, Search, Sparkles, Star } from 'lucide-react'
+import { ArrowRight, MapPin, Play, Search, Star } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 import { photo } from '@/data/images'
@@ -31,16 +31,16 @@ export function Hero() {
   }
 
   return (
-    <section className="relative flex min-h-svh flex-col justify-center overflow-hidden">
+    <section className="relative flex min-h-svh flex-col overflow-hidden">
       {/* ---------- Full-bleed background ---------- */}
       <div className="absolute inset-0" aria-hidden="true">
         <motion.img
           src={photo('photo-1613977257363-707ba9348227', { w: 2400, q: 85 })}
           alt=""
           fetchPriority="high"
-          initial={{ scale: 1.12 }}
+          initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
-          transition={{ duration: 14, ease: 'easeOut' }}
+          transition={{ duration: 16, ease: 'easeOut' }}
           className="size-full object-cover"
         />
         {/* Layered scrims: vertical for text contrast, radial to focus the centre */}
@@ -51,23 +51,23 @@ export function Hero() {
 
       {/* Colour glows */}
       <div
-        className="pointer-events-none absolute -left-40 top-1/4 size-150 rounded-full bg-brand/25 blur-[150px]"
+        className="pointer-events-none absolute -left-40 top-1/4 size-125 rounded-full bg-brand/25 blur-[140px]"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute -right-40 bottom-1/4 size-125 rounded-full bg-accent/20 blur-[150px]"
+        className="pointer-events-none absolute -right-40 bottom-1/4 size-100 rounded-full bg-accent/20 blur-[140px]"
         aria-hidden="true"
       />
 
-      {/* ---------- Centred content ---------- */}
-      <Container className="relative z-10 pb-40 pt-32">
+      {/* ---------- Centred content (fills the space above the stats rail) ---------- */}
+      <Container className="relative z-10 flex flex-1 flex-col items-center justify-center px-5 pb-8 pt-24 text-center sm:pt-28">
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
+          initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto flex max-w-4xl flex-col items-center text-center"
+          className="flex max-w-4xl flex-col items-center"
         >
-          <span className="label-mono inline-flex items-center gap-2.5 rounded-pill border border-white/15 bg-white/8 px-4 py-2 text-ice-2 backdrop-blur-md">
+          <span className="label-mono inline-flex items-center gap-2.5 rounded-pill border border-white/15 bg-white/8 px-4 py-1.5 text-ice-2 backdrop-blur-md">
             <span className="flex items-center gap-1">
               {Array.from({ length: 5 }, (_, i) => (
                 <Star key={i} className="size-3 fill-accent text-accent" />
@@ -76,21 +76,20 @@ export function Hero() {
             Rated 4.9 by 2,400+ agents
           </span>
 
-          <h1 className="mt-8 text-5xl leading-[1.05] text-white sm:text-6xl lg:text-7xl xl:text-[5.25rem]">
+          <h1 className="mt-6 text-4xl leading-[1.06] text-white sm:text-5xl lg:text-[3.5rem] xl:text-6xl">
             Every property enquiry,
             <br />
             {/* Six-stop gradient at 220% width, drifting on a 7s loop */}
             <span className="text-gradient-drift">{ROTATING[wordIndex]}</span>
           </h1>
 
-          <p className="mt-7 max-w-2xl text-lg leading-relaxed text-ice-2/75 sm:text-xl">
-            Estatly values any home in three seconds, learns what your buyers actually want, and
-            answers them on WhatsApp, Instagram and voice — at 2am, in their language, from live
-            listing data.
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-ice-2/75 sm:text-lg">
+            Estatly values any home in three seconds, learns what your buyers want, and answers them
+            on WhatsApp, Instagram and voice — at 2am, in their language, from live listing data.
           </p>
 
           {/* ---------- Search ---------- */}
-          <form onSubmit={onSubmit} className="mt-10 w-full max-w-2xl">
+          <form onSubmit={onSubmit} className="mt-7 w-full max-w-xl">
             <div className="flex flex-col gap-2 rounded-3xl border border-white/18 bg-white/10 p-2 shadow-lift backdrop-blur-2xl sm:flex-row sm:rounded-pill">
               <div className="relative flex-1">
                 <MapPin className="pointer-events-none absolute left-5 top-1/2 size-5 -translate-y-1/2 text-ice-2/55" />
@@ -99,16 +98,16 @@ export function Hero() {
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder="City, neighbourhood, or describe your ideal home"
                   aria-label="Search properties"
-                  className="h-14 w-full rounded-pill bg-transparent pl-13 pr-4 text-white placeholder:text-ice-2/50 focus:outline-none"
+                  className="h-12 w-full rounded-pill bg-transparent pl-13 pr-4 text-white placeholder:text-ice-2/50 focus:outline-none"
                 />
               </div>
-              <Button type="submit" size="lg" className="h-14 shrink-0 sm:px-8">
+              <Button type="submit" size="lg" className="h-12 shrink-0 sm:px-8">
                 <Search className="size-4.5" />
                 Search
               </Button>
             </div>
 
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+            <div className="mt-3.5 flex flex-wrap items-center justify-center gap-2">
               <span className="label-mono text-ice-2/45">Popular</span>
               {['Waterfront villas', 'Under $1M', 'New builds', 'High yield'].map((chip) => (
                 <button
@@ -123,7 +122,7 @@ export function Hero() {
             </div>
           </form>
 
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
+          <div className="mt-7 flex flex-wrap justify-center gap-3">
             <Button to="/valuation" variant="navy" size="lg">
               Value my home free
               <ArrowRight className="size-4" />
@@ -136,21 +135,21 @@ export function Hero() {
         </motion.div>
       </Container>
 
-      {/* ---------- Bottom stats rail ---------- */}
+      {/* ---------- Bottom stats rail (in flow, flush to the fold) ---------- */}
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute inset-x-0 bottom-0 z-10"
+        className="relative z-10"
       >
-        <Container>
+        <Container className="px-5">
           <div className="grid grid-cols-2 gap-px overflow-hidden rounded-t-3xl border border-b-0 border-white/12 bg-white/8 backdrop-blur-2xl lg:grid-cols-4">
             {HERO_STATS.map((stat) => (
               <div
                 key={stat.label}
-                className="flex flex-col items-center gap-1 bg-navy/20 px-4 py-6 text-center transition-colors hover:bg-white/5"
+                className="flex flex-col items-center gap-0.5 bg-navy/20 px-4 py-4 text-center transition-colors hover:bg-white/5"
               >
-                <p className="font-display text-2xl font-extrabold text-white sm:text-3xl">
+                <p className="font-display text-xl font-extrabold text-white sm:text-2xl">
                   {stat.value}
                 </p>
                 <p className="label-mono text-ice-2/55">{stat.label}</p>
@@ -158,48 +157,6 @@ export function Hero() {
             ))}
           </div>
         </Container>
-      </motion.div>
-
-      {/* ---------- Scroll cue ---------- */}
-      <motion.div
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-        className="pointer-events-none absolute bottom-36 left-1/2 z-10 hidden -translate-x-1/2 lg:block"
-        aria-hidden="true"
-      >
-        <span className="grid size-10 place-items-center rounded-full border border-white/20 text-ice-2/60 backdrop-blur-md">
-          <ChevronDown className="size-4" />
-        </span>
-      </motion.div>
-
-      {/* Floating proof chip — kept off small screens so it never crowds the copy */}
-      <motion.div
-        animate={{ y: [0, -14, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute right-10 top-32 z-10 hidden rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-2xl xl:block"
-      >
-        <div className="flex items-center gap-3">
-          <span className="grid size-10 place-items-center rounded-xl bg-whatsapp/20">
-            <span className="size-2.5 animate-pulse rounded-full bg-whatsapp" />
-          </span>
-          <div className="text-left">
-            <p className="text-xs font-bold text-white">New WhatsApp lead</p>
-            <p className="text-[11px] text-ice-2/60">Answered in 2.4s</p>
-          </div>
-        </div>
-      </motion.div>
-
-      <motion.div
-        animate={{ y: [0, 14, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1.4 }}
-        className="absolute left-10 top-1/2 z-10 hidden rounded-2xl border border-white/15 bg-white/10 p-4 text-left backdrop-blur-2xl xl:block"
-      >
-        <p className="label-mono inline-flex items-center gap-1.5 text-accent">
-          <Sparkles className="size-3" />
-          AI match
-        </p>
-        <p className="mt-1 font-display text-3xl font-extrabold text-white">96%</p>
-        <p className="text-[11px] text-ice-2/60">Azure Cliff Residence</p>
       </motion.div>
     </section>
   )
